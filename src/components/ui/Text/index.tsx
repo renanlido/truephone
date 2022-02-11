@@ -1,7 +1,13 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { CustomTag } from './styles';
 
-const Text: React.FC = () => <div />;
+import { TextBaseProps as TextProps } from './types';
+
+const Text: React.FC<TextProps> = ({ children, as, variant, ...rest }) => (
+  <CustomTag as={as} variant={variant} {...rest}>
+    {children}
+  </CustomTag>
+);
 
 export { Text };
