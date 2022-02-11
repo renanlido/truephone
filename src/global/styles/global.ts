@@ -23,7 +23,7 @@ export default createGlobalStyle`
   };
 
   *::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.forBlack};
+    background-color: ${({ theme }) => theme.colors.purple};
     border-radius: 20px;
   };
 
@@ -42,7 +42,23 @@ export default createGlobalStyle`
     font-family: ${({ theme }) => `${theme.font.Roboto}, sans-serif`};
   };
 
+  *h1 {
+    font-size: 2.25rem;
+    color: ${({ theme }) => theme.colors.purple};
+    font-weight: 700;
+  }
 
+  *h2 {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: ${({ theme }) => theme.colors.black}
+  }
+
+  *p {
+    font-size: 1.142rem;
+    font-weight: 400;
+    color: ${({ theme }) => theme.colors.gray}
+  }
 
   button {
     cursor: pointer;
@@ -68,6 +84,4 @@ export default createGlobalStyle`
     text-decoration: none;
     color: inherit;
   };
-
-
 `;
