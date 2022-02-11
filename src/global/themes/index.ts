@@ -1,5 +1,7 @@
 const colors = {
-  primary: '#383F50',
+  purple: '#3D3ADA',
+  background: '#F7F8F9',
+
   lightGray: '#B2B7BB',
   softGray: 'rgba(244, 246, 250, 0.3)',
   black: '#23262C',
@@ -15,7 +17,7 @@ const defautlTheme = {
   title: 'defaultTheme',
   colors,
   font: {
-    Montserrat: 'Montserrat',
+    Roboto: 'Roboto',
     fontSize: '1rem',
     fontWeight: 400
   }
