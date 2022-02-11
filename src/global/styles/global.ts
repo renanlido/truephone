@@ -42,19 +42,19 @@ export default createGlobalStyle`
     font-family: ${({ theme }) => `${theme.font.Roboto}, sans-serif`};
   };
 
-  *h1 {
+  h1 {
     font-size: 2.25rem;
     color: ${({ theme }) => theme.colors.purple};
     font-weight: 700;
   }
 
-  *h2 {
+  h2 {
     font-size: 1.125rem;
     font-weight: 400;
     color: ${({ theme }) => theme.colors.black}
   }
 
-  *p {
+  p {
     font-size: 1.142rem;
     font-weight: 400;
     color: ${({ theme }) => theme.colors.gray}
