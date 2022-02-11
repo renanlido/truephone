@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from 'src/components/shapes';
+import { Box } from 'src/components/infra';
 
-import { Container, Title } from './styles';
+import { Button, Container, Title } from './styles';
 
 const Home: React.FC = () => (
   <Container>
@@ -17,6 +17,7 @@ const Home: React.FC = () => (
           width={30}
         />
       </Title>
+      <Button>Selecione lista</Button>
     </Box>
   </Container>
 );
