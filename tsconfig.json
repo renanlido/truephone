@@ -18,9 +18,20 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "rootDir": "src"
   },
   "include": [
-    "src"
+    "./src/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "react-app-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "src/global/styles/styled.d.ts"
   ]
 }
