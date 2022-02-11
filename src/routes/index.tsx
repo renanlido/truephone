@@ -1,14 +1,15 @@
 import { Route, BrowserRouter } from 'react-router-dom';
-import { GameDetails } from '../pages/GameDetails';
-
-import { Home } from '../pages/Home';
-import { LatestNews } from '../pages/LatestNews';
+import { Home } from 'src/pages/Home';
+import { NotFound } from 'src/pages/NotFound';
 
 const Routes = () => (
   <BrowserRouter>
-    <Route component={Home} path="/" exact />
-    <Route component={GameDetails} path="/game-details" />
-    <Route component={LatestNews} path="/latest-news" />
+    <Route element={Home} path="/">
+      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
+    <Route path="*" element={<NotFound />} />
   </BrowserRouter>
 );
 
