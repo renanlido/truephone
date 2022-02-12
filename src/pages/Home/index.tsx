@@ -5,6 +5,7 @@ import { Content, Wrapper, Title, Paragraph, Button, Small } from './styles';
 
 const Home: React.FC = () => {
   const handleFile = (file: File | null | undefined) => {
+    // eslint-disable-next-line no-console
     console.log(file);
   };
 
