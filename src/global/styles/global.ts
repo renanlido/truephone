@@ -5,7 +5,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: ${({ theme }) => `${theme.font.Montserrat}, sans-serif`};
+    font-family: ${({ theme }) => `${theme.font.Roboto}, sans-serif`};
     font-size: ${({ theme }) => theme.font.fontSize};
 
     /* Works on Firefox */
@@ -23,15 +23,15 @@ export default createGlobalStyle`
   };
 
   *::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.forBlack};
+    background-color: ${({ theme }) => theme.colors.purple};
     border-radius: 20px;
   };
 
   body {
     width: 100vw;
     height: 100vh;
-    background-color: ${({ theme }) => theme.colors.softGray} !important;
-    background: ${({ theme }) => theme.colors.softGray}!important;
+    background-color: ${({ theme }) => theme.colors.background} !important;
+    background: ${({ theme }) => theme.colors.background}!important;
   };
 
   body,
@@ -39,10 +39,8 @@ export default createGlobalStyle`
   textarea,
   select,
   button {
-    font-family: ${({ theme }) => `${theme.font.Montserrat}, sans-serif`};
+    font-family: ${({ theme }) => `${theme.font.Roboto}, sans-serif`};
   };
-
-
 
   button {
     cursor: pointer;
@@ -68,6 +66,4 @@ export default createGlobalStyle`
     text-decoration: none;
     color: inherit;
   };
-
-
 `;
