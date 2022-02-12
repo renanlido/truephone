@@ -32,6 +32,8 @@
     "node_modules"
   ],
   "files": [
-    "src/global/@types/**/*.ts",
+    "./src/global/@types/images.d.ts",
+    "./src/global/@types/styled.d.ts",
+    "./src/global/@types/svg.d.ts"
   ]
 }

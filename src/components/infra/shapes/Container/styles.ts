@@ -8,4 +8,6 @@ export const Container = styled.main`
   align-items: center;
 
   padding: 0 20px;
+
+  width: 100%;
 `;

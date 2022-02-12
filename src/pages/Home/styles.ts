@@ -1,19 +1,6 @@
 import styled from 'styled-components';
-import { Button as InfraButton, Box as InfraBox } from 'src/components/infra';
-import { Text } from 'src/components/ui';
 
-export const Content = styled(InfraBox)``;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 20px;
-
-  width: min(max(100%), 466px);
-`;
+import { Button as InfraButton, Text } from 'src/components/ui';
 
 export const Title = styled(Text)`
   text-align: center;

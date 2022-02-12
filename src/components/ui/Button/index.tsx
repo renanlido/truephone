@@ -2,19 +2,22 @@ import React, { ButtonHTMLAttributes, ChangeEvent, useRef } from 'react';
 import { Text, TextBaseProps } from 'src/components/ui';
 import Ripple from 'react-ripples';
 
+import { HandleFileProps, useFileValidation } from 'src/shared/hooks';
+
 import { Container } from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: TextBaseProps['variant'];
-  handleFile: (file: File | null | undefined) => void;
+  textTypeVariant: TextBaseProps['variant'];
+  handleFile: (props: HandleFileProps) => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
   children,
-  variant,
+  textTypeVariant,
   handleFile,
   ...rest
 }) => {
+  const { handleValidateFile } = useFileValidation();
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
@@ -23,16 +26,17 @@ const Button: React.FC<ButtonProps> = ({
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { target } = event;
-
     const file = target.files?.item(0);
 
-    handleFile(file);
+    const validFile = handleValidateFile(file);
+
+    handleFile(validFile);
   };
 
   return (
     <Ripple>
       <Container onClick={handleClick} {...rest}>
-        <Text variant={variant}>{children}</Text>
+        <Text variant={textTypeVariant}>{children}</Text>
       </Container>
       <input
         accept=".csv"
