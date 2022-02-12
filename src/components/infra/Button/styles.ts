@@ -8,6 +8,7 @@ export const Container = styled.button`
   color: ${({ theme }) => theme.colors.pureWhite};
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.purple};
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 
   &:hover {
     ${({ theme }) => css`

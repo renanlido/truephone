@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 
 import { Container } from './styles';
 
-const Box: React.FC = ({ children }) => <Container>{children} </Container>;
+type BoxProps = HTMLAttributes<HTMLElement>;
+
+const Box: React.FC<BoxProps> = ({ children, ...rest }) => (
+  <Container {...rest}>{children} </Container>
+);
 
 export { Box };

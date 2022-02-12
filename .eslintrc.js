@@ -49,6 +49,7 @@ module.exports = {
         namedComponents: 'arrow-function',
         unnamedComponents: 'arrow-function'
       }
-    ]
+    ],
+    '@typescript-eslint/no-unused-vars': 'warn'
   }
 };

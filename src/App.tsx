@@ -7,7 +7,7 @@ import { Header } from './components/infra';
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <div className="App">
+    <div className="App" style={{ width: '100vw', height: '100vh' }}>
       <GlobalStyles />
       <Header />
       <Routes />

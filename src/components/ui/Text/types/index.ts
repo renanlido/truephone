@@ -4,7 +4,7 @@ import theme from 'src/global/themes';
 export type ElementTypes = 'h1' | 'h2' | 'p';
 
 enum FontSizeVariation {
-  'sm' = '1.02rem', // 14px
+  'sm' = '0.875rem', // 14px
   'md' = '1.125rem', // 18px
   'lg' = '2.25rem' // 36px
 }
@@ -81,5 +81,5 @@ export const Variants: VariantObject = {
 export interface TextBaseProps
   extends HTMLAttributes<HTMLHeadingElement | HTMLParagraphElement> {
   variant: keyof typeof VartiantTypes;
-  as?: ElementTypes;
+  type?: string | React.ComponentType<any>;
 }
