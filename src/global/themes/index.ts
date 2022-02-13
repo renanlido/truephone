@@ -3,7 +3,8 @@ const colors = {
   background: '#F7F8F9',
   gray: '#747474',
   pureWhite: '#FFFFFF',
-  black: '#000000'
+  black: '#000000',
+  mutedGray: '#D3D8DD'
 };
 
 const defautlTheme = {
@@ -11,6 +12,7 @@ const defautlTheme = {
   colors,
   font: {
     Roboto: 'Roboto',
+    Poppins: 'Poppins',
     fontSize: '1rem',
     fontWeight: 400
   }

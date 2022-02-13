@@ -1,45 +1,90 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { parse } from 'papaparse';
+import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
-import { UploadFilesContainer } from 'src/components/ui/UploadFilesContainer';
-import { HandleFileProps } from 'src/shared/hooks';
-import { Title, Paragraph, Button, Small } from './styles';
+import { delay, fileValidation } from 'src/shared/utils';
+
+import { useData } from 'src/shared/hooks';
+
+import { Body } from './Body';
+import { Loading } from './Loading';
+
+import { Container } from './shared/styles';
 
 const Home: React.FC = () => {
-  const handleFile = ({ file, error }: HandleFileProps) => {
-    console.log({ file, error });
+  const { handleData } = useData();
+  const navigate = useNavigate();
+  const [isProcessing, setProcessing] = useState(false);
+  const [isValidStateFile, setIsValidStateFile] = useState<boolean | null>(
+    null
+  );
+
+  const handleFiles = async (sendedFile: File) => {
+    setProcessing(true);
+    const { file, error } = fileValidation(sendedFile);
+
+    if (!file) {
+      setProcessing(false);
+      setIsValidStateFile(false);
+      return;
+    }
+
+    if (error) {
+      setProcessing(false);
+      setIsValidStateFile(!error);
+      return;
+    }
+
+    setIsValidStateFile(true);
+
+    const getTextFromFile = await file.text();
+
+    const result = parse<any>(getTextFromFile, {
+      header: false,
+      delimiter: ';'
+    });
+
+    const array = result.data.map(data => {
+      const phoneToString = String(data[0]);
+      const textToString = String(data[1]);
+
+      const lessThanEleven = phoneToString.length <= 11;
+      const thirdCharacterIsNine = phoneToString
+        .substring(2, 3)
+        .startsWith('9');
+      const lessThanHundredSix = textToString.length <= 160;
+
+      return {
+        id: uuidv4(),
+        name: file.name,
+        date: new Date().toISOString(),
+        phone: phoneToString,
+        message: textToString,
+        fileIsValid:
+          lessThanEleven && thirdCharacterIsNine && lessThanHundredSix
+      };
+    });
+
+    handleData(array);
+    await delay(5000);
+
+    navigate('/list');
+  };
+
+  const handleLoading = () => {
+    setProcessing(false);
+    setIsValidStateFile(null);
   };
 
   return (
-    <UploadFilesContainer handleFile={handleFile}>
-      <Title type="h1" variant="title">
-        Verifique a validade de uma lista de mensagens
-        <img
-          alt="👍 thumbs up Emoji on Apple Platform"
-          title="👍 thumbs up Emoji on Apple Platform"
-          data-src="https://emojiguide.com/wp-content/uploads/platform/apple/44140.png"
-          src="https://emojiguide.com/wp-content/uploads/platform/apple/44140.png"
-          data-loaded="true"
-          width={25}
-        />
-      </Title>
-
-      <Button handleFile={handleFile} textTypeVariant="button">
-        Selecione lista
-      </Button>
-
-      <Paragraph type="p" variant="paragraph">
-        Selecione um arquivo CSV para iniciar a verificação de uma lista com
-        números e mensagens de SMS.
-      </Paragraph>
-
-      <Small type="small" variant="small">
-        Use nosso{' '}
-        <a href="/assets/documents/modelo.csv" download="modelo.csv">
-          modelo
-        </a>{' '}
-        de arquivo se você tem alguma dúvidas.
-      </Small>
-    </UploadFilesContainer>
+    <Container isValid={isValidStateFile} isProcessing={isProcessing}>
+      {!isProcessing ? (
+        <Body handleFiles={handleFiles} />
+      ) : (
+        <Loading handleLoading={handleLoading} />
+      )}
+    </Container>
   );
 };
 

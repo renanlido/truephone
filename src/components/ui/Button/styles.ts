@@ -1,20 +1,43 @@
 import styled, { css } from 'styled-components';
-import { darken } from 'polished';
+import { lighten } from 'polished';
+import { Button as InfraButton } from 'src/components/infra/Button';
 
-export const Container = styled.button`
-  padding: 20px 30px;
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.pureWhite};
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.purple};
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+interface ButtonProps {
+  variant?: 'outline' | 'solid';
+}
 
-  &:hover {
-    ${({ theme }) => css`
-      background-color: ${darken(0.2, theme.colors.purple)};
+export const Button = styled(InfraButton)<ButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  ${({ variant, theme: { colors } }) =>
+    variant === 'outline' &&
+    css`
+      background: transparent;
+      border: 2px solid ${colors.gray};
+      padding: 18px 28px;
+
+      span {
+        color: ${colors.gray};
+      }
+
+      &:hover {
+        padding: 18px 28px;
+        border: 2px solid ${lighten(0.2, colors.gray)};
+        background: transparent;
+
+        cursor: pointer;
+
+        span {
+          color: ${lighten(0.2, colors.gray)};
+        }
+
+        svg {
+          color: ${lighten(0.2, colors.gray)};
+        }
+      }
     `}
-
-    cursor: pointer;
-  }
+  transition: all 0.2s ease;
 `;

@@ -1,17 +1,13 @@
-import {
-  HandleFileProps as HandleFilePropsUseValidation,
-  UploadedFile as UploadFileUseValidation,
-  FileValidationContextProvider
-} from './useFileValidation';
+import { DataObject as Object, DataContextProvider, useData } from './useData';
 
-export type HandleFileProps = HandleFilePropsUseValidation;
-export type UploadedFile = UploadFileUseValidation;
-export { useFileValidation } from './useFileValidation';
+export type DataObjectType = Object;
 
 interface CustomContextHooksProps {
   children: React.ReactNode;
 }
 
 export const CustomContextHooks = ({ children }: CustomContextHooksProps) => (
-  <FileValidationContextProvider>{children}</FileValidationContextProvider>
+  <DataContextProvider>{children}</DataContextProvider>
 );
+
+export { useData };

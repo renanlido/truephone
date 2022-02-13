@@ -8,9 +8,8 @@ export const Container = styled.section`
 
   gap: 20px;
 
-  padding: clamp(20px, 4vw, 85px) clamp(144px, 4vw, 188px);
+  padding: 85px 188px;
   border-radius: 10px;
-  margin-top: 90px;
 
   background-color: ${({ theme }) => theme.colors.pureWhite};
   border: 4px solid ${({ theme }) => theme.colors.purple};
@@ -18,13 +17,6 @@ export const Container = styled.section`
 
   width: min(max(100%), 842px);
 
-  height: min(max(100%), 466px);
-
-  @media (max-width: 550px) {
-    margin-top: calc(90px - 5%);
-  }
-
-  @media (max-width: 375px) {
-    margin-top: calc(90px - 10%);
-  }
+  height: min(max(100%), 468px);
+  min-height: 468px;
 `;

@@ -6,7 +6,8 @@ export type ElementTypes = 'h1' | 'h2' | 'p';
 enum FontSizeVariation {
   'sm' = '0.875rem', // 14px
   'md' = '1.125rem', // 18px
-  'lg' = '2.25rem' // 36px
+  'lg' = '1.5rem', // 24px
+  'xl' = '2.25rem' // 36px
 }
 
 enum LineHeightVariation {
@@ -24,6 +25,7 @@ enum FontWeightVariation {
 
 export enum VartiantTypes {
   'header',
+  'subtitle',
   'title',
   'button',
   'paragraph',
@@ -45,11 +47,18 @@ export const Variants: VariantObject = {
   header: {
     lineHeight: LineHeightVariation.lg,
     fontWeight: FontWeightVariation.bolder,
-    fontSize: FontSizeVariation.lg,
+    fontSize: FontSizeVariation.xl,
     color: theme.colors.purple
   },
 
   title: {
+    lineHeight: LineHeightVariation.lg,
+    fontWeight: FontWeightVariation.bold,
+    fontSize: FontSizeVariation.xl,
+    color: theme.colors.black
+  },
+
+  subtitle: {
     lineHeight: LineHeightVariation.lg,
     fontWeight: FontWeightVariation.bold,
     fontSize: FontSizeVariation.lg,

@@ -12,8 +12,8 @@ import { Container, Header } from './components/infra';
 const App = () => (
   <ThemeProvider theme={theme}>
     <CustomContextHooks>
-      <div className="App" style={{ width: '100vw', height: '100vh' }}>
-        <GlobalStyles />
+      <GlobalStyles />
+      <div className="App">
         <Header />
         <Container>
           <Routes />

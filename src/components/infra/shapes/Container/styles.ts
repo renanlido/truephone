@@ -5,9 +5,12 @@ export const Container = styled.main`
   flex-direction: column;
   flex: 1;
 
+  margin-top: clamp(20px, 15vw, 130px);
+
   align-items: center;
 
-  padding: 0 20px;
+  padding: 90px 20px;
 
   width: 100%;
+  height: 100%;
 `;

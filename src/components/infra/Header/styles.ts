@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
   flex: 1;
+  width: 100%;
   align-items: center;
   justify-content: center;
   padding: 42px;

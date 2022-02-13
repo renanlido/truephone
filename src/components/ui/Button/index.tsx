@@ -1,23 +1,25 @@
 import React, { ButtonHTMLAttributes, ChangeEvent, useRef } from 'react';
 import { Text, TextBaseProps } from 'src/components/ui';
-import Ripple from 'react-ripples';
 
-import { HandleFileProps, useFileValidation } from 'src/shared/hooks';
-
-import { Container } from './styles';
+import { Button as CustomButton } from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   textTypeVariant: TextBaseProps['variant'];
-  handleFile: (props: HandleFileProps) => void;
+  handleFile?: (file: File) => void;
+  as?: 'button' | 'input';
+  variant?: 'outline' | 'solid';
+  icon?: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
   children,
   textTypeVariant,
   handleFile,
+  as = 'input',
+  variant = 'solid',
+  icon: Icon,
   ...rest
 }) => {
-  const { handleValidateFile } = useFileValidation();
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
@@ -26,26 +28,39 @@ const Button: React.FC<ButtonProps> = ({
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { target } = event;
-    const file = target.files?.item(0);
+    const file = target.files?.item(0) as File;
 
-    const validFile = handleValidateFile(file);
-
-    handleFile(validFile);
+    if (handleFile) {
+      handleFile(file);
+    }
   };
 
+  if (as === 'input') {
+    return (
+      <>
+        <CustomButton onClick={handleClick} {...rest}>
+          <Text variant={textTypeVariant} type="span">
+            {children}
+          </Text>
+        </CustomButton>
+        <input
+          accept=".csv"
+          type="file"
+          style={{ display: 'none' }}
+          ref={hiddenFileInput}
+          onChange={handleChange}
+        />
+      </>
+    );
+  }
+
   return (
-    <Ripple>
-      <Container onClick={handleClick} {...rest}>
-        <Text variant={textTypeVariant}>{children}</Text>
-      </Container>
-      <input
-        accept=".csv"
-        type="file"
-        style={{ display: 'none' }}
-        ref={hiddenFileInput}
-        onChange={handleChange}
-      />
-    </Ripple>
+    <CustomButton variant={variant} {...rest}>
+      <Text variant={textTypeVariant} type="span">
+        {children}
+      </Text>
+      {Icon && Icon}
+    </CustomButton>
   );
 };
 
