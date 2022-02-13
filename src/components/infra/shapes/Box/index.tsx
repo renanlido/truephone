@@ -1,11 +1,17 @@
-import React, { HTMLAttributes } from 'react';
+import React, { forwardRef, HTMLAttributes } from 'react';
 
 import { Container } from './styles';
 
 type BoxProps = HTMLAttributes<HTMLElement>;
 
-const Box: React.FC<BoxProps> = ({ children, ...rest }) => (
-  <Container {...rest}>{children} </Container>
+const CustomBox: React.ForwardRefRenderFunction<any, BoxProps> = (
+  { children, ...rest },
+  ref
+) => (
+  <Container ref={ref} {...rest}>
+    {children}
+  </Container>
 );
 
+const Box = forwardRef(CustomBox);
 export { Box };

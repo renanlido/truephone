@@ -1,17 +1,24 @@
 import { ThemeProvider } from 'styled-components';
+
 import theme from 'src/global/themes';
 import GlobalStyles from 'src/global/styles';
+
 import { Routes } from 'src/routes';
-import { Header } from './components/infra';
-// import { Header } from './components/Header';
+
+import { CustomContextHooks } from 'src/shared/hooks';
+import { Container, Header } from './components/infra';
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <div className="App" style={{ width: '100vw', height: '100vh' }}>
+    <CustomContextHooks>
       <GlobalStyles />
-      <Header />
-      <Routes />
-    </div>
+      <div className="App">
+        <Header />
+        <Container>
+          <Routes />
+        </Container>
+      </div>
+    </CustomContextHooks>
   </ThemeProvider>
 );
 
