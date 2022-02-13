@@ -4,7 +4,7 @@ import { Box } from 'src/components/infra';
 import { Text } from 'src/components/ui';
 
 export const Container = styled(Box)`
-  padding: 40px;
+  padding: 40px !important;
 
   justify-content: start;
   min-height: 100%;
@@ -16,10 +16,10 @@ export const Title = styled(Text)`
   max-width: 466px;
 
   span {
-    font-size: 2.25rem;
+    font-size: 3.6rem;
     color: #12c223;
   }
-
+  /*
   @media (max-width: 550px) {
     font-size: 2rem;
     line-height: 35px;
@@ -28,7 +28,7 @@ export const Title = styled(Text)`
   @media (max-width: 375px) {
     font-size: 1.8rem;
     line-height: 35px;
-  }
+  } */
 `;
 
 export const List = styled.ul`
@@ -44,7 +44,7 @@ export const List = styled.ul`
   border: 1px solid ${({ theme: { colors } }) => colors.mutedGray};
   width: 100%;
 
-  font-size: 0.875rem !important;
+  font-size: 1.4rem !important;
 `;
 
 export const Header = styled.li`
@@ -59,12 +59,37 @@ export const Header = styled.li`
 
   box-shadow: inset 0px -1px 0px ${({ theme: { colors } }) => colors.mutedGray};
 
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr 2fr 1fr;
+    height: auto !important;
+    padding: 10px;
+    gap: 20px;
+  }
+
+  @media (max-width: 625px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    height: auto !important;
+    padding: 10px;
+    gap: 10px;
+  }
+
   &:last-child {
     border-bottom: 0;
   }
 
-  div {
-    font-size: 0.875rem;
+  p.validText {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 30px;
+
+    @media (max-width: 700px) {
+      gap: 20px;
+    }
+
+    @media (max-width: 625px) {
+      gap: 5px;
+    }
   }
 `;
 
@@ -75,13 +100,6 @@ export const Row = styled(Header)`
 
   & + li {
     border-top: 1px solid ${({ theme: { colors } }) => colors.mutedGray};
-  }
-
-  div:nth-child(3) {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: 30px;
   }
 `;
 

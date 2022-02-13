@@ -7,7 +7,6 @@ import { Routes } from 'src/routes';
 
 import { CustomContextHooks } from 'src/shared/hooks';
 import { Container, Header } from './components/infra';
-// import { Header } from './components/Header';
 
 const App = () => (
   <ThemeProvider theme={theme}>

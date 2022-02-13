@@ -17,14 +17,14 @@ export const Button = styled(InfraButton)<ButtonProps>`
     css`
       background: transparent;
       border: 2px solid ${colors.gray};
-      padding: 18px 28px;
+      padding: clamp(8px, 1vw, 18px) clamp(13px, 2vw, 28px) !important;
 
       span {
         color: ${colors.gray};
       }
 
       &:hover {
-        padding: 18px 28px;
+        padding: clamp(8px, 1vw, 18px) clamp(13px, 2vw, 28px) !important;
         border: 2px solid ${lighten(0.2, colors.gray)};
         background: transparent;
 

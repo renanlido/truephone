@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Button, Paragraph, Small, Title } from '../shared/styles';
+import { Button } from 'src/components/ui';
+
+import { Paragraph, Small, Title } from '../shared/styles';
 
 interface BodyProps {
   handleFiles: (file: File) => void;

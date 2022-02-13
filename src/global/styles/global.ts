@@ -5,8 +5,11 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: ${({ theme }) => theme.font.fontSize};
   };
+
+  html {
+    font-size: 62.5%;
+  }
 
   body {
     width: 100vw;
@@ -15,6 +18,7 @@ export default createGlobalStyle`
     font-family: ${({ theme }) => `${theme.font.Roboto}, sans-serif`};
     overflow-x: hidden;
     overflow: overlay;
+    font-size: 1.6rem;
 
   };
 
@@ -32,7 +36,7 @@ export default createGlobalStyle`
     margin: 0;
     text-decoration: none;
     color: #ffffff;
-    font-size: 1rem;
+    font-size: 1.6rem;
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out,

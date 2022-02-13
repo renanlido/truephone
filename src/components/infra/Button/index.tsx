@@ -1,7 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react';
-import Ripple from 'react-ripples';
 
-import { Container } from './styles';
+import { Container, Ripple } from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 

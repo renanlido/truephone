@@ -8,7 +8,7 @@ export const Container = styled.section`
 
   gap: 20px;
 
-  padding: 85px 188px;
+  padding: clamp(40px, 5vw, 85px) clamp(20px, 11vw, 188px);
   border-radius: 10px;
 
   background-color: ${({ theme }) => theme.colors.pureWhite};
@@ -16,7 +16,4 @@ export const Container = styled.section`
   box-shadow: 0px 10px 60px rgba(61, 58, 218, 0.15);
 
   width: min(max(100%), 842px);
-
-  height: min(max(100%), 468px);
-  min-height: 468px;
 `;

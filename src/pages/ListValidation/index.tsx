@@ -5,21 +5,33 @@ import { ReactComponent as Valid } from 'src/assets/icons/valid.svg';
 import { ReactComponent as Invalid } from 'src/assets/icons/invalid.svg';
 import { Button, Text } from 'src/components/ui';
 import { useTheme } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { Container, Footer, Header, List, Row, Title } from './styles';
 
 const ListValidation: React.FC = () => {
   const { data } = useData();
   const { colors } = useTheme();
+  const navigate = useNavigate();
 
   const dataValidCount = data.filter(item => item.fileIsValid === true).length;
 
   const isValid = (value: boolean) =>
     value ? (
-      <>
+      <Text
+        variant="small"
+        type="p"
+        style={{ color: '#000' }}
+        className="validText"
+      >
         Válida <Valid color="#12C223" width={27} height={27} />
-      </>
+      </Text>
     ) : (
-      <>
+      <Text
+        variant="small"
+        type="p"
+        style={{ color: '#000' }}
+        className="validText"
+      >
         Inválida{' '}
         <Valid
           color="#EE5454
@@ -27,7 +39,7 @@ const ListValidation: React.FC = () => {
           width={27}
           height={27}
         />
-      </>
+      </Text>
     );
 
   return (
@@ -46,16 +58,38 @@ const ListValidation: React.FC = () => {
 
       <List>
         <Header>
-          <div>Número</div>
-          <div>Prévia da mensagem</div>
-          <div>Resultado</div>
+          <Text
+            variant="small"
+            type="p"
+            style={{ color: '#000', fontWeight: 600 }}
+          >
+            Número
+          </Text>
+          <Text
+            variant="small"
+            type="p"
+            style={{ color: '#000', fontWeight: 600 }}
+          >
+            Prévia da mensagem
+          </Text>
+          <Text
+            variant="small"
+            type="p"
+            style={{ color: '#000', fontWeight: 600 }}
+          >
+            Resultado
+          </Text>
         </Header>
 
         {data.map(item => (
           <Row key={item.id}>
-            <div>{item.phone}</div>
-            <div>{item.message.substring(0, 40)}...</div>
-            <div>{isValid(item.fileIsValid)}</div>
+            <Text variant="small" type="p" style={{ color: '#000' }}>
+              {item.phone}
+            </Text>
+            <Text variant="small" type="p" style={{ color: '#000' }}>
+              {item.message.substring(0, 40)}...
+            </Text>
+            <>{isValid(item.fileIsValid)}</>
           </Row>
         ))}
       </List>
@@ -82,6 +116,7 @@ const ListValidation: React.FC = () => {
             variant="outline"
             as="button"
             textTypeVariant="button"
+            onClick={() => navigate('/')}
           >
             Cancelar
           </Button>

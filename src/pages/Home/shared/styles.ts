@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 
-import { Button as InfraButton, Text } from 'src/components/ui';
+import { Text } from 'src/components/ui';
 
 import theme from 'src/global/themes';
 import { Box } from 'src/components/infra';
@@ -52,30 +52,11 @@ export const Container = styled(Box)<ContainerProps>`
 
 export const Title = styled(Text)`
   text-align: center;
-
-  @media (max-width: 550px) {
-    font-size: 2rem;
-    line-height: 35px;
-  }
-
-  @media (max-width: 375px) {
-    font-size: 1.8rem;
-    line-height: 35px;
-  }
 `;
 
 export const Paragraph = styled(Text)`
   text-align: center;
   max-width: 409px;
-
-  @media (max-width: 550px) {
-    font-size: calc(1.25rem - 20%);
-  }
-
-  @media (max-width: 375px) {
-    font-size: calc(1.25rem - 20%);
-    line-height: calc(21px - 10%);
-  }
 `;
 
 export const Small = styled(Text)`
@@ -83,7 +64,7 @@ export const Small = styled(Text)`
 
   button {
     color: ${({ theme: { colors } }) => colors.purple};
-    font-size: 0.885rem;
+    font-size: clamp(0.4rem, 1rem + 0.7450771687067589vw, 1.4rem);
     background: none;
     text-decoration: underline;
     cursor: pointer;
@@ -98,19 +79,12 @@ export const Small = styled(Text)`
   }
 
   a {
-    font-size: 0.875rem;
+    font-size: clamp(0.4rem, 1rem + 0.7450771687067589vw, 1.4rem);
     color: ${({ theme: { colors } }) => colors.purple};
     font-weight: 500;
   }
 
   @media (max-width: 375px) {
     margin-top: 10px;
-  }
-`;
-
-export const Button = styled(InfraButton)`
-  @media (max-width: 550px) {
-    margin: 10px 0;
-    width: 100%;
   }
 `;
