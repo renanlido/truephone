@@ -1,3 +1,5 @@
+import { isMobile } from 'react-device-detect';
+
 export type UploadedFile = File | null | undefined;
 
 export interface HandleFileProps {
@@ -6,7 +8,14 @@ export interface HandleFileProps {
 }
 
 const fileValidation = (file: UploadedFile): HandleFileProps => {
-  if (file?.type !== 'text/csv') {
+  if (isMobile) {
+    if (file?.type !== 'text/comma-separated-values') {
+      return {
+        file,
+        error: true
+      };
+    }
+  } else if (file?.type !== 'text/csv') {
     if (file?.type !== 'application/vnd.ms-excel') {
       return {
         file,

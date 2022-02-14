@@ -46,6 +46,7 @@ const Button: React.FC<ButtonProps> = ({
         </CustomButton>
         <input
           type="file"
+          accept=".csv"
           style={{ display: 'none' }}
           ref={hiddenFileInput}
           onChange={handleChange}
