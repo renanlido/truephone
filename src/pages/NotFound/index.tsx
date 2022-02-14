@@ -1,7 +1,18 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { ReactComponent as NotFoundBg } from 'src/assets/svg/notFoundImage.svg';
+import { Text } from 'src/components/ui';
 
-const NotFound: React.FC = () => <h1>Ola mundo</h1>;
+import { Container } from './styles';
+
+const NotFound: React.FC = () => (
+  <Container>
+    <NotFoundBg />
+
+    <Text type="h1" variant="header">
+      Alguem aí viu o estagiário?
+    </Text>
+  </Container>
+);
 
 export { NotFound };

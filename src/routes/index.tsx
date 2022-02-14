@@ -1,5 +1,5 @@
 import { Routes as ReactRoutes, Route, BrowserRouter } from 'react-router-dom';
-import { Home, ListValidation } from 'src/pages';
+import { Home, ListValidation, Finish } from 'src/pages';
 import { NotFound } from 'src/pages/NotFound';
 
 const Routes = () => (
@@ -7,8 +7,8 @@ const Routes = () => (
     <ReactRoutes>
       <Route element={<Home />} path="/" />
       <Route path="/list" element={<ListValidation />} />
-      <Route path="/finalizar" element={<NotFound />} />
-      <Route element={<NotFound />} path="/not-found" />
+      <Route path="/finish" element={<Finish />} />
+      <Route element={<NotFound />} path="*" />
     </ReactRoutes>
   </BrowserRouter>
 );
