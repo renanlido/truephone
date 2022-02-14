@@ -8,6 +8,18 @@ export const Container = styled(Box)`
 
   justify-content: start;
   min-height: 100%;
+
+  @media (max-width: 768px) {
+    padding: 20px 10px !important;
+  }
+
+  @media (max-width: 500px) {
+    padding: 20px 10px !important;
+  }
+
+  @media (max-width: 375px) {
+    padding: 20px 10px !important;
+  }
 `;
 
 export const Title = styled(Text)`
