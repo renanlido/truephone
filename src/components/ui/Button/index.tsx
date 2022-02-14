@@ -63,7 +63,13 @@ const Button: React.FC<ButtonProps> = ({
       <Text variant={textTypeVariant} type="span">
         {children}
       </Text>
-      {Icon && !loading ? Icon : <BeatLoader size={10} color="#aaa" />}
+      {Icon && !loading ? (
+        Icon
+      ) : (
+        <span style={{ display: 'flex', flex: 1, minWidth: 36 }}>
+          <BeatLoader size={8} color="#aaa" />
+        </span>
+      )}
     </CustomButton>
   );
 };
