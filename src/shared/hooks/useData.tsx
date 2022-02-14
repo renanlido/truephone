@@ -7,12 +7,14 @@ import {
 } from 'react';
 
 export type DataObject = {
-  id: string;
   name: string;
   date: string;
-  phone: string;
-  message: string;
-  fileIsValid: boolean;
+  contactsList: {
+    id: string;
+    phone: string;
+    message: string;
+    fileIsValid: boolean;
+  }[];
 };
 
 interface DataProps {
@@ -20,14 +22,14 @@ interface DataProps {
 }
 
 type DataContextType = {
-  handleData: (value: DataObject[]) => void;
-  data: DataObject[];
+  handleData: (value: DataObject) => void;
+  data: DataObject;
 };
 
 const DataContext = createContext({} as DataContextType);
 
 export const DataContextProvider = ({ children }: DataProps) => {
-  const [data, setData] = useState<DataObject[]>([]);
+  const [data, setData] = useState<DataObject>({} as DataObject);
 
   const handleData = useCallback(value => {
     setData(value);

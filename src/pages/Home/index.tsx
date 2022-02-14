@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { parse } from 'papaparse';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { format } from 'date-fns';
 
 import { delay, fileValidation } from 'src/shared/utils';
 
@@ -45,7 +46,7 @@ const Home: React.FC = () => {
       delimiter: ';'
     });
 
-    const array = result.data.map(data => {
+    const contactsList = result.data.map(data => {
       const phoneToString = String(data[0]);
       const textToString = String(data[1]);
 
@@ -57,8 +58,6 @@ const Home: React.FC = () => {
 
       return {
         id: uuidv4(),
-        name: file.name,
-        date: new Date().toISOString(),
         phone: phoneToString,
         message: textToString,
         fileIsValid:
@@ -66,7 +65,17 @@ const Home: React.FC = () => {
       };
     });
 
-    handleData(array);
+    const newData = new Date();
+
+    const formattedData = format(newData, 'dd/MM/yyyy');
+
+    const data = {
+      name: file.name,
+      date: formattedData,
+      contactsList
+    };
+
+    handleData(data);
     await delay(5000);
 
     navigate('/list');

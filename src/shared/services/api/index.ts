@@ -1,5 +1,5 @@
 import api from './axios';
 
 export { api };
-export { getAll, findOne, getLatestNews } from './services/rapidapi.service';
-export type { GetAllResponseApi } from './services/types';
+export { postFile as postFileService } from './services/truephone.service';
+export type { PostFile as PostFileProps } from './services/types';
