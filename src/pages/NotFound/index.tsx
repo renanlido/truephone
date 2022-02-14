@@ -7,7 +7,7 @@ import { Container } from './styles';
 
 const NotFound: React.FC = () => (
   <Container>
-    <NotFoundBg />
+    <NotFoundBg width="100%" />
 
     <Text type="h1" variant="header">
       Alguem aí viu o estagiário?
