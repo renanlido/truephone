@@ -74,7 +74,7 @@ const ListValidation: React.FC = () => {
       contactsList: newContacts
     });
 
-    if (response.status === 200) {
+    if (response) {
       setLoading(false);
       navigate('/finish');
       return;

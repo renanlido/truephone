@@ -1,5 +1,3 @@
 import axios from 'axios';
 
-export default axios.create({
-  baseURL: 'https://truephone-api.herokuapp.com/'
-});
+export default axios.create();
