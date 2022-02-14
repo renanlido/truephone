@@ -45,4 +45,11 @@ export const Small = styled(UiText)`
 
     transition: all 0.5s ease;
   }
+
+  @media (max-width: 720px) {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+  }
 `;

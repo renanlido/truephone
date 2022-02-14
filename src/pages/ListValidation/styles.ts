@@ -143,4 +143,8 @@ export const Background = styled.div`
   width: 100%;
 
   background: rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 720px) {
+    height: 118%;
+  }
 `;
