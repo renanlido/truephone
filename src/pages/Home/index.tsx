@@ -67,7 +67,7 @@ const Home: React.FC = () => {
 
     const newData = new Date();
 
-    const formattedData = format(newData, 'dd/MM/yyyy');
+    const formattedData = format(newData, 'dd/MM/yyyy-kk:mm:ss');
 
     const data = {
       name: file.name,
