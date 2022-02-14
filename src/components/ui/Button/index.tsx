@@ -29,8 +29,6 @@ const Button: React.FC<ButtonProps> = ({
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { target } = event;
 
-    console.log('passei aqui');
-
     const file = target.files?.item(0) as File;
 
     if (handleFile) {
