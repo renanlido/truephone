@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes, ChangeEvent, useRef } from 'react';
+import { BeatLoader } from 'react-spinners';
 import { Text, TextBaseProps } from 'src/components/ui';
 
 import { Button as CustomButton } from './styles';
@@ -9,6 +10,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   as?: 'button' | 'input';
   variant?: 'outline' | 'solid';
   icon?: React.ReactNode;
+  loading?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -18,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   as = 'input',
   variant = 'solid',
   icon: Icon,
+  loading,
   ...rest
 }) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
@@ -60,7 +63,7 @@ const Button: React.FC<ButtonProps> = ({
       <Text variant={textTypeVariant} type="span">
         {children}
       </Text>
-      {Icon && Icon}
+      {Icon && !loading ? Icon : <BeatLoader size={10} color="#aaa" />}
     </CustomButton>
   );
 };

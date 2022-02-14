@@ -129,22 +129,3 @@ export const Footer = styled.footer`
     gap: 20px;
   }
 `;
-
-export const Background = styled.div`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  top: 0;
-  left: 0;
-
-  height: 108%;
-  width: 100%;
-
-  background: rgba(0, 0, 0, 0.3);
-
-  @media (max-width: 720px) {
-    height: 118%;
-  }
-`;
